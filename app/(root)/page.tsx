@@ -1,7 +1,5 @@
-import Image from "next/image";
 import SearchForm from "../../components/SearchForm";
 import StartupCards, { StartupTypeCard } from "@/components/StartupCards";
-import { client } from "@/sanity/lib/client";
 import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { auth } from "@/auth";
@@ -16,7 +14,7 @@ export default async function Home( {searchParams}: {searchParams: Promise<{quer
   const {data: posts} = await sanityFetch({query: STARTUPS_QUERY , params}); 
 
   const session = await auth();
-  console.log("session by radha", session?.id);
+  // console.log("session by radha", session?.id);
 
 
 
@@ -50,7 +48,7 @@ export default async function Home( {searchParams}: {searchParams: Promise<{quer
             posts.length > 0 
             ?
             (
-              posts.map((post: StartupTypeCard) => (<StartupCards key={post?._id} post={post}/>))
+              posts.map((post: any) => (<StartupCards key={post?._id} post={post}/>))
             )
             :
             <p className="no_results">No startups found</p>

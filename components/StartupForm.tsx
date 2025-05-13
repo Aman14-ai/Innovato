@@ -24,7 +24,7 @@ import { createPitch } from '@/lib/action';
 const StartupForm = () => {
 
     const [errors, setErrors] = useState<Record<string, string>>({});
-    let [pitch, setPitch] = React.useState("");
+    const [pitch, setPitch] = React.useState("");
     const router = useRouter();
 
 
@@ -48,7 +48,7 @@ const StartupForm = () => {
 
 
             router.push(`/startup/${result._id }`)
-            pitch = "";
+            
 
             // return result;
 
